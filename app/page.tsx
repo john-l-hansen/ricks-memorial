@@ -13,10 +13,16 @@ import { Printer } from "lucide-react";
 export default function MemorialPage() {
   return (
     <div className="min-h-screen bg-brand-50 flex flex-col justify-between">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2.5 focus:bg-brand-950 focus:text-brand-50 focus:font-semibold focus:text-xs focus:uppercase focus:tracking-wider focus:rounded-md focus:shadow-elevated focus:outline-none focus:ring-2 focus:ring-brand-400 transition-transform"
+      >
+        Skip to main content
+      </a>
       <LoadingScreen />
       <Navbar />
 
-      <main className="flex-1 pt-20 sm:pt-24 pb-16 px-3 sm:px-6">
+      <main id="main-content" tabIndex={-1} className="flex-1 pt-20 sm:pt-24 pb-16 px-3 sm:px-6 outline-none">
         <div className="max-w-4xl mx-auto space-y-12 sm:space-y-16">
           {/* Main Flyer Framed Card */}
           <div className="print-page bg-white border border-brand-300 shadow-warm rounded-sm sm:rounded-md p-6 sm:p-12 md:p-16 relative">
@@ -37,7 +43,7 @@ export default function MemorialPage() {
                 October 5, 1957 — June 8, 2026
               </p>
 
-              <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-brand-600 uppercase font-sans mb-8">
+              <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-brand-700 uppercase font-sans mb-8">
                 HUSBAND — FATHER — PAPA — SON — BROTHER — UNCLE — FRIEND
               </p>
 
@@ -91,7 +97,7 @@ export default function MemorialPage() {
                 </p>
                 <a
                   href="mailto:ricksmemorialtribute11726@gmail.com?subject=RSVP%20for%20Rick's%20Memorial"
-                  className="font-serif text-base sm:text-xl text-brand-950 underline hover:text-brand-700 transition-colors font-medium break-all"
+                  className="font-serif text-base sm:text-xl text-brand-950 underline hover:text-brand-700 transition-colors font-medium break-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 rounded"
                 >
                   ricksmemorialtribute11726@gmail.com
                 </a>
@@ -102,9 +108,10 @@ export default function MemorialPage() {
                 <button
                   type="button"
                   onClick={() => window.print()}
-                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-700 hover:text-brand-950 bg-brand-100/70 hover:bg-brand-200 px-4 py-2 rounded transition-colors cursor-pointer"
+                  aria-label="Print or save memorial flyer"
+                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-800 hover:text-brand-950 bg-brand-100/80 hover:bg-brand-200 px-4 py-2 rounded transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
                 >
-                  <Printer className="w-4 h-4" />
+                  <Printer className="w-4 h-4" aria-hidden="true" />
                   Print / Save Memorial Flyer
                 </button>
               </div>

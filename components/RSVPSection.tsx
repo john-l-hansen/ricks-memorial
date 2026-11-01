@@ -89,10 +89,10 @@ export default function RSVPSection() {
           {/* Quick Email Copy Box */}
           <div className="inline-flex items-center justify-between gap-3 bg-brand-900/90 border border-brand-700 px-4 py-3 rounded-md max-w-full mb-8">
             <div className="flex items-center gap-2 overflow-hidden text-left">
-              <Mail className="w-4 h-4 text-brand-400 shrink-0" />
+              <Mail className="w-4 h-4 text-brand-400 shrink-0" aria-hidden="true" />
               <a
                 href={mailtoLink}
-                className="text-brand-100 font-sans font-medium text-xs sm:text-sm hover:underline truncate"
+                className="text-brand-100 font-sans font-medium text-xs sm:text-sm hover:underline truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 rounded px-1"
               >
                 {rsvpEmail}
               </a>
@@ -100,21 +100,25 @@ export default function RSVPSection() {
             <button
               onClick={handleCopyEmail}
               type="button"
-              className="px-3 py-1 bg-brand-800 hover:bg-brand-700 text-brand-100 rounded text-xs flex items-center gap-1 transition-colors shrink-0 cursor-pointer"
+              className="px-3 py-1 bg-brand-800 hover:bg-brand-700 text-brand-100 rounded text-xs flex items-center gap-1 transition-colors shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
+              aria-label="Copy RSVP email address"
               title="Copy Email Address"
             >
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-green-400" />
-                  Copied
+                  <Check className="w-3.5 h-3.5 text-green-400" aria-hidden="true" />
+                  <span>Copied</span>
                 </>
               ) : (
                 <>
-                  <Copy className="w-3.5 h-3.5" />
-                  Copy Email
+                  <Copy className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>Copy Email</span>
                 </>
               )}
             </button>
+            <span className="sr-only" aria-live="polite">
+              {copied ? "RSVP email address copied to clipboard." : ""}
+            </span>
           </div>
 
           {/* Direct RSVP Form */}
@@ -161,40 +165,49 @@ export default function RSVPSection() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-brand-300 uppercase tracking-wider mb-1.5">
-                  Your Name(s) *
+                <label htmlFor="rsvp-guest-name" className="block text-xs font-semibold text-brand-300 uppercase tracking-wider mb-1.5">
+                  Your Name(s) <span aria-hidden="true">*</span>
                 </label>
                 <input
+                  id="rsvp-guest-name"
+                  name="name"
+                  autoComplete="name"
                   type="text"
                   required
+                  aria-required="true"
                   value={guestName}
                   onChange={(e) => setGuestName(e.target.value)}
                   placeholder="e.g. John & Jane Doe"
-                  className="w-full bg-brand-950 border border-brand-700 rounded px-3.5 py-2.5 text-sm text-brand-100 placeholder-brand-600 focus:outline-none focus:border-brand-400 transition-colors"
+                  className="w-full bg-brand-950 border border-brand-700 rounded px-3.5 py-2.5 text-sm text-brand-100 placeholder-brand-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950 transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-brand-300 uppercase tracking-wider mb-1.5">
+                <label htmlFor="rsvp-guest-email" className="block text-xs font-semibold text-brand-300 uppercase tracking-wider mb-1.5">
                   Your Email Address (Any provider welcome)
                 </label>
                 <input
+                  id="rsvp-guest-email"
+                  name="email"
+                  autoComplete="email"
                   type="email"
                   value={guestEmail}
                   onChange={(e) => setGuestEmail(e.target.value)}
                   placeholder="e.g. yourname@yahoo.com / outlook.com / icloud.com"
-                  className="w-full bg-brand-950 border border-brand-700 rounded px-3.5 py-2.5 text-sm text-brand-100 placeholder-brand-600 focus:outline-none focus:border-brand-400 transition-colors"
+                  className="w-full bg-brand-950 border border-brand-700 rounded px-3.5 py-2.5 text-sm text-brand-100 placeholder-brand-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950 transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-brand-300 uppercase tracking-wider mb-1.5">
+                <label htmlFor="rsvp-attendee-count" className="block text-xs font-semibold text-brand-300 uppercase tracking-wider mb-1.5">
                   Number of Attendees
                 </label>
                 <select
+                  id="rsvp-attendee-count"
+                  name="attendeeCount"
                   value={attendeeCount}
                   onChange={(e) => setAttendeeCount(e.target.value)}
-                  className="w-full bg-brand-950 border border-brand-700 rounded px-3.5 py-2.5 text-sm text-brand-100 focus:outline-none focus:border-brand-400 transition-colors"
+                  className="w-full bg-brand-950 border border-brand-700 rounded px-3.5 py-2.5 text-sm text-brand-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950 transition-colors"
                 >
                   <option value="1">1 Person</option>
                   <option value="2">2 People</option>
@@ -205,15 +218,17 @@ export default function RSVPSection() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-brand-300 uppercase tracking-wider mb-1.5">
+                <label htmlFor="rsvp-guest-note" className="block text-xs font-semibold text-brand-300 uppercase tracking-wider mb-1.5">
                   A Note for the Family (Optional)
                 </label>
                 <textarea
+                  id="rsvp-guest-note"
+                  name="note"
                   rows={3}
                   value={guestNote}
                   onChange={(e) => setGuestNote(e.target.value)}
                   placeholder="Share a thought, memory, or note of support..."
-                  className="w-full bg-brand-950 border border-brand-700 rounded px-3.5 py-2.5 text-sm text-brand-100 placeholder-brand-600 focus:outline-none focus:border-brand-400 transition-colors"
+                  className="w-full bg-brand-950 border border-brand-700 rounded px-3.5 py-2.5 text-sm text-brand-100 placeholder-brand-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950 transition-colors"
                 />
               </div>
 
@@ -221,16 +236,16 @@ export default function RSVPSection() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full mt-2 py-3 bg-brand-100 text-brand-950 font-semibold rounded hover:bg-white transition-colors text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md cursor-pointer disabled:opacity-70 disabled:cursor-wait"
+                className="w-full mt-2 py-3 bg-brand-100 text-brand-950 font-semibold rounded hover:bg-white transition-colors text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md cursor-pointer disabled:opacity-70 disabled:cursor-wait focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950"
               >
                 {status === "sending" ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
                     Sending…
                   </>
                 ) : (
                   <>
-                    <Send className="w-4 h-4" />
+                    <Send className="w-4 h-4" aria-hidden="true" />
                     Send RSVP
                   </>
                 )}
@@ -238,7 +253,7 @@ export default function RSVPSection() {
 
               {status === "error" && (
                 <div role="alert" className="p-3 bg-brand-950/80 border border-red-400/40 rounded text-center text-xs text-brand-200">
-                  <AlertCircle className="w-4 h-4 text-red-300 inline mr-1.5" />
+                  <AlertCircle className="w-4 h-4 text-red-300 inline mr-1.5" aria-hidden="true" />
                   {errorMessage} Please try again, or send it from your own email using the buttons below.
                 </div>
               )}
@@ -253,40 +268,42 @@ export default function RSVPSection() {
                     href={yahooWebLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs px-3 py-1.5 bg-brand-950 border border-brand-700 rounded text-brand-200 hover:text-white hover:border-brand-400 transition-colors"
+                    className="inline-flex items-center gap-1 text-xs px-3 py-1.5 bg-brand-950 border border-brand-700 rounded text-brand-200 hover:text-white hover:border-brand-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
                   >
-                    Yahoo Mail
-                    <ExternalLink className="w-3 h-3 text-brand-400" />
+                    <span>Yahoo Mail</span>
+                    <ExternalLink className="w-3 h-3 text-brand-400" aria-hidden="true" />
+                    <span className="sr-only"> (opens Yahoo Mail in a new tab)</span>
                   </a>
                   <a
                     href={outlookWebLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs px-3 py-1.5 bg-brand-950 border border-brand-700 rounded text-brand-200 hover:text-white hover:border-brand-400 transition-colors"
+                    className="inline-flex items-center gap-1 text-xs px-3 py-1.5 bg-brand-950 border border-brand-700 rounded text-brand-200 hover:text-white hover:border-brand-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
                   >
-                    Outlook / Hotmail
-                    <ExternalLink className="w-3 h-3 text-brand-400" />
+                    <span>Outlook / Hotmail</span>
+                    <ExternalLink className="w-3 h-3 text-brand-400" aria-hidden="true" />
+                    <span className="sr-only"> (opens Outlook in a new tab)</span>
                   </a>
                   <a
                     href={gmailWebLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs px-3 py-1.5 bg-brand-950 border border-brand-700 rounded text-brand-200 hover:text-white hover:border-brand-400 transition-colors"
+                    className="inline-flex items-center gap-1 text-xs px-3 py-1.5 bg-brand-950 border border-brand-700 rounded text-brand-200 hover:text-white hover:border-brand-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
                   >
-                    Gmail
-                    <ExternalLink className="w-3 h-3 text-brand-400" />
+                    <span>Gmail</span>
+                    <ExternalLink className="w-3 h-3 text-brand-400" aria-hidden="true" />
+                    <span className="sr-only"> (opens Gmail in a new tab)</span>
                   </a>
                   <a
                     href={mailtoLink}
-                    className="inline-flex items-center gap-1 text-xs px-3 py-1.5 bg-brand-950 border border-brand-700 rounded text-brand-200 hover:text-white hover:border-brand-400 transition-colors"
+                    className="inline-flex items-center gap-1 text-xs px-3 py-1.5 bg-brand-950 border border-brand-700 rounded text-brand-200 hover:text-white hover:border-brand-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
                   >
-                    Apple / Other App
-                    <ExternalLink className="w-3 h-3 text-brand-400" />
+                    <span>Apple / Other App</span>
+                    <ExternalLink className="w-3 h-3 text-brand-400" aria-hidden="true" />
                   </a>
                 </div>
               </div>
             </div>
-
             )}
           </form>
         </div>

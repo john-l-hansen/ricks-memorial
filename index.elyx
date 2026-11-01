@@ -1,9 +1,6 @@
-// index.elyx - Root Elyx Canvas Entrypoint
-import "design/tokens.elyx" as tokens
 import "design/memorial-screen.elyx" as memorialScreen
 
 export tributeScreen = frame : memorialScreen.MemorialScreen {
-  name: "Rick Memorial Tribute Web Screen",
   left: 40px,
   top: 40px
 }

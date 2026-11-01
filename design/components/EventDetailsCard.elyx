@@ -1,197 +1,203 @@
-import "../tokens.elyx" as tokens
+use "ricks-memorial-flyer/Document fonts/CormorantGaramond-Italic.ttf"
+use "ricks-memorial-flyer/Document fonts/CormorantGaramond-Regular.ttf"
+
+import "design/tokens.elyx" as tokens
 
 export EventDetailsCard = frame {
-  name: "Event Details Card",
   left: 0px,
   top: 0px,
   width: 860px,
-  padding: 40px,
-  corner-radius: tokens.lengths.radius-md,
+  layout: {direction: .column, item-gap: 28px},
   fill: tokens.colors.bgSurface,
-  border: { width: 1px, color: tokens.colors.borderSubtle },
-  layout: { direction: .column, item-gap: 28px },
+  border: tokens.colors.borderSubtle,
+  corner-radius: tokens.lengths.radius-md,
+  padding: 40px,
   children: [sectionHeader, infoColumnsRow, memoryInvitationBox],
 
   sectionHeader = frame {
     width: 100%,
-    layout: { direction: .column, align-items: .center, item-gap: 6px },
+    layout: {direction: .column, align-items: .center, item-gap: 6px},
     children: [tagline, titleText, titleDivider],
 
     tagline = text {
+      fill: tokens.colors.brand700,
       contents: "GATHERING INFORMATION",
       font-size: 12,
       font-family: tokens.typography.fontSans,
-      letter-spacing: 15%,
-      fill: tokens.colors.brand700
-    },
+      letter-spacing: 15%
+    }
 
     titleText = text {
+      fill: tokens.colors.brand950,
       contents: "Celebration of Life",
       font-size: 32,
-      font-family: tokens.typography.fontSerif,
-      fill: tokens.colors.brand950
-    },
+      font-family: tokens.typography.fontSerif
+    }
 
     titleDivider = frame {
       width: 48px,
       height: 2px,
       fill: tokens.colors.brand400
     }
-  },
+  }
 
   infoColumnsRow = frame {
     width: 100%,
-    layout: { direction: .row, item-gap: 24px },
+    layout: {item-gap: 24px},
     children: [dateTimeCol, locationCol],
 
     dateTimeCol = frame {
       width: 378px,
-      padding: 24px,
-      corner-radius: tokens.lengths.radius-sm,
+      layout: {direction: .column, item-gap: 12px},
       fill: tokens.colors.brand50,
-      border: { width: 1px, color: tokens.colors.brand100 },
-      layout: { direction: .column, item-gap: 12px },
+      border: tokens.colors.brand100,
+      corner-radius: tokens.lengths.radius-sm,
+      padding: 24px,
       children: [dtHeading, dtDate, dtTime, dtActionsRow],
 
       dtHeading = text {
+        fill: tokens.colors.brand950,
         contents: "Date & Time",
         font-size: 20,
-        font-family: tokens.typography.fontSerif,
-        fill: tokens.colors.brand950
-      },
+        font-family: tokens.typography.fontSerif
+      }
 
       dtDate = text {
+        fill: tokens.colors.brand900,
         contents: "Saturday, November 7, 2026",
         font-size: 16,
-        font-family: tokens.typography.fontSans,
-        fill: tokens.colors.brand900
-      },
+        font-family: tokens.typography.fontSans
+      }
 
       dtTime = text {
+        fill: tokens.colors.brand700,
         contents: "11:00 a.m. — 3:00 p.m.",
         font-size: 14,
         font-family: tokens.typography.fontSerif,
-        font-style: "Italic",
-        fill: tokens.colors.brand700
-      },
+        font-style: "Italic"
+      }
 
       dtActionsRow = frame {
-        layout: { direction: .row, item-gap: 8px },
+        layout: {item-gap: 8px},
         children: [gcalBtn, icalBtn],
 
         gcalBtn = frame {
-          padding: [8px, 14px],
-          corner-radius: tokens.lengths.radius-sm,
+          layout: {justify-content: .center, align-items: .center},
           fill: tokens.colors.brand900,
-          layout: { direction: .row, align-items: .center, justify-content: .center },
-          children: [gcalLabel],
+          corner-radius: tokens.lengths.radius-sm,
+          padding: [8px, 14px],
+          children: gcalLabel,
+
           gcalLabel = text {
+            fill: tokens.colors.textLight,
             contents: "Add to Google Calendar",
             font-size: 11,
-            font-family: tokens.typography.fontSans,
-            fill: tokens.colors.textLight
-          }
-        },
-
-        icalBtn = frame {
-          padding: [8px, 14px],
-          corner-radius: tokens.lengths.radius-sm,
-          fill: tokens.colors.brand200,
-          layout: { direction: .row, align-items: .center, justify-content: .center },
-          children: [icalLabel],
-          icalLabel = text {
-            contents: "iCal / Outlook",
-            font-size: 11,
-            font-family: tokens.typography.fontSans,
-            fill: tokens.colors.brand900
+            font-family: tokens.typography.fontSans
           }
         }
-      }
-    },
 
-    locationCol = frame {
-      width: 378px,
-      padding: 24px,
-      corner-radius: tokens.lengths.radius-sm,
-      fill: tokens.colors.brand50,
-      border: { width: 1px, color: tokens.colors.brand100 },
-      layout: { direction: .column, item-gap: 12px },
-      children: [locHeading, locVenue, locAddress, locActionsRow],
-
-      locHeading = text {
-        contents: "Location",
-        font-size: 20,
-        font-family: tokens.typography.fontSerif,
-        fill: tokens.colors.brand950
-      },
-
-      locVenue = text {
-        contents: "Fraternal Order of Eagles — Azusa Aerie #2810",
-        font-size: 15,
-        font-family: tokens.typography.fontSans,
-        fill: tokens.colors.brand900
-      },
-
-      locAddress = text {
-        contents: "1603 San Gabriel Canyon Road\nAzusa, California 91702",
-        font-size: 14,
-        font-family: tokens.typography.fontSerif,
-        font-style: "Italic",
-        fill: tokens.colors.brand700
-      },
-
-      locActionsRow = frame {
-        layout: { direction: .row, item-gap: 8px },
-        children: [gmapsBtn, appleMapsBtn],
-
-        gmapsBtn = frame {
-          padding: [8px, 14px],
-          corner-radius: tokens.lengths.radius-sm,
-          fill: tokens.colors.brand700,
-          layout: { direction: .row, align-items: .center, justify-content: .center },
-          children: [gmapsLabel],
-          gmapsLabel = text {
-            contents: "Google Maps",
-            font-size: 11,
-            font-family: tokens.typography.fontSans,
-            fill: tokens.colors.textLight
-          }
-        },
-
-        appleMapsBtn = frame {
-          padding: [8px, 14px],
-          corner-radius: tokens.lengths.radius-sm,
+        icalBtn = frame {
+          layout: {justify-content: .center, align-items: .center},
           fill: tokens.colors.brand200,
-          layout: { direction: .row, align-items: .center, justify-content: .center },
-          children: [appleMapsLabel],
-          appleMapsLabel = text {
-            contents: "Apple Maps",
+          corner-radius: tokens.lengths.radius-sm,
+          padding: [8px, 14px],
+          children: icalLabel,
+
+          icalLabel = text {
+            fill: tokens.colors.brand900,
+            contents: "iCal / Outlook",
             font-size: 11,
-            font-family: tokens.typography.fontSans,
-            fill: tokens.colors.brand900
+            font-family: tokens.typography.fontSans
           }
         }
       }
     }
-  },
+
+    locationCol = frame {
+      width: 378px,
+      layout: {direction: .column, item-gap: 12px},
+      fill: tokens.colors.brand50,
+      border: tokens.colors.brand100,
+      corner-radius: tokens.lengths.radius-sm,
+      padding: 24px,
+      children: [locHeading, locVenue, locAddress, locActionsRow],
+
+      locHeading = text {
+        fill: tokens.colors.brand950,
+        contents: "Location",
+        font-size: 20,
+        font-family: tokens.typography.fontSerif
+      }
+
+      locVenue = text {
+        fill: tokens.colors.brand900,
+        contents: "Fraternal Order of Eagles — Azusa Aerie #2810",
+        font-size: 15,
+        font-family: tokens.typography.fontSans
+      }
+
+      locAddress = text {
+        fill: tokens.colors.brand700,
+        contents: "1603 San Gabriel Canyon Road\nAzusa, California 91702",
+        font-size: 14,
+        font-family: tokens.typography.fontSerif,
+        font-style: "Italic"
+      }
+
+      locActionsRow = frame {
+        layout: {item-gap: 8px},
+        children: [gmapsBtn, appleMapsBtn],
+
+        gmapsBtn = frame {
+          layout: {justify-content: .center, align-items: .center},
+          fill: tokens.colors.brand700,
+          corner-radius: tokens.lengths.radius-sm,
+          padding: [8px, 14px],
+          children: gmapsLabel,
+
+          gmapsLabel = text {
+            fill: tokens.colors.textLight,
+            contents: "Google Maps",
+            font-size: 11,
+            font-family: tokens.typography.fontSans
+          }
+        }
+
+        appleMapsBtn = frame {
+          layout: {justify-content: .center, align-items: .center},
+          fill: tokens.colors.brand200,
+          corner-radius: tokens.lengths.radius-sm,
+          padding: [8px, 14px],
+          children: appleMapsLabel,
+
+          appleMapsLabel = text {
+            fill: tokens.colors.brand900,
+            contents: "Apple Maps",
+            font-size: 11,
+            font-family: tokens.typography.fontSans
+          }
+        }
+      }
+    }
+  }
 
   memoryInvitationBox = frame {
     width: 100%,
-    padding: 20px,
-    corner-radius: tokens.lengths.radius-sm,
+    layout: {direction: .column, align-items: .center},
     fill: tokens.colors.brand100,
-    border: { width: 1px, color: tokens.colors.brand200 },
-    layout: { direction: .column, align-items: .center },
-    children: [inviteQuote],
+    border: tokens.colors.brand200,
+    corner-radius: tokens.lengths.radius-sm,
+    padding: 20px,
+    children: inviteQuote,
 
     inviteQuote = text {
       width: 100%,
-      align: .center,
+      fill: tokens.colors.brand900,
       contents: "“We invite you to bring a favorite memory of Rick, written down or simply carried in your heart. There will be a special place to leave your written memories for our family to keep, and time to share stories together for those who would like to.”",
       font-size: 15,
       font-family: tokens.typography.fontSerif,
       font-style: "Italic",
-      fill: tokens.colors.brand900
+      align: .center
     }
   }
 }

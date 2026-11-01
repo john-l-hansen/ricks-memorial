@@ -1,42 +1,41 @@
 import "../tokens.elyx" as tokens
 
 export Button = frame {
-  name: "Button",
   left: 0px,
   top: 0px,
-  children: [label],
-  layout: { direction: .row, align-items: .center, justify-content: .center, item-gap: 8px },
-  padding: [12px, 24px],
-  corner-radius: tokens.lengths.radius-sm,
+  layout: {justify-content: .center, align-items: .center, item-gap: 8px},
   fill: tokens.colors.brand900,
+  corner-radius: tokens.lengths.radius-sm,
+  padding: [12px, 24px],
+  children: label,
 
   label = text {
+    fill: tokens.colors.textLight,
     contents: "RSVP via Email",
     font-size: 14,
-    font-family: tokens.typography.fontSans,
-    fill: tokens.colors.textLight
+    font-family: tokens.typography.fontSans
   }
 }
 
 @variant
 export outlineButton = frame : Button {
-  name: "Outline Button",
   left: 200px,
   top: 0px,
-  fill: #00000000,
-  border: { width: 1px, color: tokens.colors.brand700 },
+  border[0].color: tokens.colors.brand700,
+  fill[0].color: .transparent,
+
   label {
-    fill: tokens.colors.brand900
+    fill[0].color: tokens.colors.brand900
   }
 }
 
 @variant
 export secondaryButton = frame : Button {
-  name: "Secondary Button",
   left: 400px,
   top: 0px,
-  fill: tokens.colors.brand100,
+  fill[0].color: tokens.colors.brand100,
+
   label {
-    fill: tokens.colors.brand900
+    fill[0].color: tokens.colors.brand900
   }
 }

@@ -1,29 +1,35 @@
+use "ricks-memorial-flyer/Document fonts/CormorantGaramond-Regular.ttf"
+
 import "../tokens.elyx" as tokens
 
 export LoadingScreen = frame {
-  name: "Loading Screen",
   left: 0px,
   top: 0px,
   width: 600px,
   height: 400px,
-  layout: {direction: .column, align-items: .center, justify-content: .center, item-gap: 24px},
-  padding: [48px, 32px],
+  layout: {
+    direction: .column,
+    justify-content: .center,
+    align-items: .center,
+    item-gap: 24px
+  },
   fill: tokens.colors.bgCanvas,
+  padding: [48px, 32px],
   children: [logoMonogram, loadingBarTrack, statusText],
 
   logoMonogram = text {
+    fill: tokens.colors.brand950,
     contents: "Richard Earl LaDow Jr.",
     font-size: 22,
-    font-family: tokens.typography.fontSerif,
-    fill: tokens.colors.brand950
-  },
+    font-family: tokens.typography.fontSerif
+  }
 
   loadingBarTrack = frame {
     width: 240px,
     height: 2px,
     fill: tokens.colors.brand200,
     corner-radius: tokens.lengths.radius-pill,
-    children: [loadingBarFill],
+    children: loadingBarFill,
 
     loadingBarFill = frame {
       left: 0px,
@@ -33,14 +39,14 @@ export LoadingScreen = frame {
       fill: tokens.colors.brand800,
       corner-radius: tokens.lengths.radius-pill
     }
-  },
+  }
 
   statusText = text {
+    fill: tokens.colors.brand700,
     contents: "Loading... one moment.",
     font-size: 13,
     font-family: tokens.typography.fontSans,
     font-style: "Regular",
-    letter-spacing: 5%,
-    fill: tokens.colors.brand700
+    letter-spacing: 5%
   }
 }

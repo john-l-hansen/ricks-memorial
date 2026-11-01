@@ -1,135 +1,139 @@
+use "ricks-memorial-flyer/Document fonts/CormorantGaramond-Italic.ttf"
+use "ricks-memorial-flyer/Document fonts/CormorantGaramond-Regular.ttf"
+
 import "../tokens.elyx" as tokens
 
 export MemoryBookCard = frame {
-  name: "Digital Memory Book Card",
   left: 0px,
   top: 0px,
   width: 860px,
-  padding: 40px,
-  corner-radius: tokens.lengths.radius-md,
+  layout: {direction: .column, item-gap: 28px},
   fill: tokens.colors.bgSurface,
-  border: { width: 1px, color: tokens.colors.borderSubtle },
-  layout: { direction: .column, item-gap: 28px },
+  border: tokens.colors.borderSubtle,
+  corner-radius: tokens.lengths.radius-md,
+  padding: 40px,
   children: [bookHeader, passcodeBox, emptyStateBox],
 
   bookHeader = frame {
     width: 100%,
-    layout: { direction: .column, align-items: .center, item-gap: 6px },
+    layout: {direction: .column, align-items: .center, item-gap: 6px},
     children: [bookTag, bookTitle, bookDivider, bookSubtitle],
 
     bookTag = text {
+      fill: tokens.colors.brand700,
       contents: "MEMORIES & REFLECTIONS",
       font-size: 12,
       font-family: tokens.typography.fontSans,
-      letter-spacing: 15%,
-      fill: tokens.colors.brand700
-    },
+      letter-spacing: 15%
+    }
 
     bookTitle = text {
+      fill: tokens.colors.brand950,
       contents: "Digital Memory Book",
       font-size: 32,
-      font-family: tokens.typography.fontSerif,
-      fill: tokens.colors.brand950
-    },
+      font-family: tokens.typography.fontSerif
+    }
 
     bookDivider = frame {
       width: 48px,
       height: 2px,
       fill: tokens.colors.brand400
-    },
+    }
 
     bookSubtitle = text {
+      fill: tokens.colors.brand700,
       contents: "Share a memory, story, or message of comfort for Rick’s family.",
       font-size: 14,
       font-family: tokens.typography.fontSerif,
-      font-style: "Italic",
-      fill: tokens.colors.brand700
+      font-style: "Italic"
     }
-  },
+  }
 
   passcodeBox = frame {
     width: 540px,
-    padding: 24px,
-    corner-radius: tokens.lengths.radius-md,
+    layout: {direction: .column, align-items: .center, item-gap: 12px},
     fill: tokens.colors.brand50,
-    border: { width: 1px, color: tokens.colors.brand200 },
-    layout: { direction: .column, align-items: .center, item-gap: 12px },
+    border: tokens.colors.brand200,
+    corner-radius: tokens.lengths.radius-md,
+    padding: 24px,
     children: [pcTitle, pcDesc, pcInputRow],
 
     pcTitle = text {
+      fill: tokens.colors.brand950,
       contents: "Family & Friends Passcode",
       font-size: 18,
-      font-family: tokens.typography.fontSerif,
-      fill: tokens.colors.brand950
-    },
+      font-family: tokens.typography.fontSerif
+    }
 
     pcDesc = text {
-      align: .center,
+      fill: tokens.colors.brand700,
       contents: "To keep this space private and meaningful for Rick’s family, please enter the family passcode from your invitation or flyer to share a memory.",
       font-size: 12,
       font-family: tokens.typography.fontSans,
-      fill: tokens.colors.brand700
-    },
+      align: .center
+    }
 
     pcInputRow = frame {
       width: 320px,
-      layout: { direction: .row, item-gap: 8px },
+      layout: {item-gap: 8px},
       children: [inputBox, unlockBtn],
 
       inputBox = frame {
         width: 220px,
-        padding: [8px, 12px],
-        corner-radius: tokens.lengths.radius-sm,
+        layout: {align-items: .center},
         fill: tokens.colors.bgSurface,
-        border: { width: 1px, color: tokens.colors.brand300 },
-        layout: { direction: .row, align-items: .center },
-        children: [inputPlaceholder],
+        border: tokens.colors.brand300,
+        corner-radius: tokens.lengths.radius-sm,
+        padding: [8px, 12px],
+        children: inputPlaceholder,
+
         inputPlaceholder = text {
+          fill: tokens.colors.brand400,
           contents: "Enter passcode...",
           font-size: 13,
-          font-family: tokens.typography.fontSans,
-          fill: tokens.colors.brand400
+          font-family: tokens.typography.fontSans
         }
-      },
+      }
 
       unlockBtn = frame {
-        padding: [8px, 16px],
-        corner-radius: tokens.lengths.radius-sm,
+        layout: {justify-content: .center, align-items: .center},
         fill: tokens.colors.brand900,
-        layout: { direction: .row, align-items: .center, justify-content: .center },
-        children: [unlockLabel],
+        corner-radius: tokens.lengths.radius-sm,
+        padding: [8px, 16px],
+        children: unlockLabel,
+
         unlockLabel = text {
+          fill: tokens.colors.textLight,
           contents: "Unlock",
           font-size: 11,
-          font-family: tokens.typography.fontSans,
-          fill: tokens.colors.textLight
+          font-family: tokens.typography.fontSans
         }
       }
     }
-  },
+  }
 
   emptyStateBox = frame {
     width: 100%,
-    padding: [32px, 20px],
-    corner-radius: tokens.lengths.radius-sm,
+    layout: {direction: .column, align-items: .center, item-gap: 8px},
     fill: tokens.colors.brand50,
-    border: { width: 1px, color: tokens.colors.brand200 },
-    layout: { direction: .column, align-items: .center, item-gap: 8px },
+    border: tokens.colors.brand200,
+    corner-radius: tokens.lengths.radius-sm,
+    padding: [32px, 20px],
     children: [emptyTitle, emptySubtitle],
 
     emptyTitle = text {
+      fill: tokens.colors.brand900,
       contents: "No memories shared yet.",
       font-size: 16,
       font-family: tokens.typography.fontSerif,
-      font-style: "Italic",
-      fill: tokens.colors.brand900
-    },
+      font-style: "Italic"
+    }
 
     emptySubtitle = text {
+      fill: tokens.colors.brand700,
       contents: "Be the first to share a favorite story, laugh, or message of comfort for Rick’s family.",
       font-size: 12,
-      font-family: tokens.typography.fontSans,
-      fill: tokens.colors.brand700
+      font-family: tokens.typography.fontSans
     }
   }
 }

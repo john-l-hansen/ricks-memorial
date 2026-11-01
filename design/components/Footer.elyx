@@ -1,3 +1,6 @@
+use "ricks-memorial-flyer/Document fonts/CormorantGaramond-Italic.ttf"
+use "ricks-memorial-flyer/Document fonts/CormorantGaramond-Regular.ttf"
+
 import "design/tokens.elyx" as tokens
 
 export Footer = frame {

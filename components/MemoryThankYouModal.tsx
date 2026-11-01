@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { X, Heart } from "lucide-react";
 
 interface MemoryThankYouModalProps {
@@ -14,6 +14,8 @@ export default function MemoryThankYouModal({
   onClose,
   authorName,
 }: MemoryThankYouModalProps) {
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -22,14 +24,17 @@ export default function MemoryThankYouModal({
     if (isOpen) {
       document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
+      const timer = setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 50);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+        clearTimeout(timer);
+      };
     } else {
       document.body.style.overflow = "";
     }
-
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
@@ -48,16 +53,17 @@ export default function MemoryThankYouModal({
       >
         {/* Close Button */}
         <button
+          ref={closeButtonRef}
           onClick={onClose}
           type="button"
-          aria-label="Close modal"
-          className="absolute top-4 right-4 text-brand-400 hover:text-brand-900 transition-colors p-1.5 rounded-full hover:bg-brand-100/70"
+          aria-label="Close thank you dialog"
+          className="absolute top-4 right-4 text-brand-500 hover:text-brand-950 transition-colors p-1.5 rounded-full hover:bg-brand-100/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700"
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5" aria-hidden="true" />
         </button>
 
         {/* Animated Dog Illustration */}
-        <div className="flex justify-center mb-5 relative">
+        <div className="flex justify-center mb-5 relative" aria-hidden="true">
           <div className="relative w-36 h-36 flex items-center justify-center">
             {/* Floating Heart */}
             <div className="absolute top-1 right-6 animate-heart-float pointer-events-none text-brand-600">
@@ -174,7 +180,7 @@ export default function MemoryThankYouModal({
         <button
           onClick={onClose}
           type="button"
-          className="w-full sm:w-auto px-8 py-2.5 bg-brand-900 text-brand-50 rounded-md text-xs font-semibold uppercase tracking-wider hover:bg-brand-950 transition-colors shadow-sm cursor-pointer"
+          className="w-full sm:w-auto px-8 py-2.5 bg-brand-900 text-brand-50 rounded-md text-xs font-semibold uppercase tracking-wider hover:bg-brand-950 transition-colors shadow-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
         >
           Close
         </button>

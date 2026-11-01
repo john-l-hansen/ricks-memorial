@@ -9,6 +9,12 @@ export default function LoadingScreen() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Check if user prefers reduced motion
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setLoading(false);
+      return;
+    }
+
     // Smooth progress progression
     const startTime = Date.now();
     const duration = 1200; // 1.2 seconds for an elegant, non-intrusive feel
@@ -44,7 +50,7 @@ export default function LoadingScreen() {
       <div className="flex flex-col items-center text-center px-6 max-w-sm mx-auto">
         {/* Subtle Memorial Icon */}
         <div className="mb-4 transform transition-transform duration-1000 ease-out">
-          <Heart className="w-6 h-6 text-brand-600 fill-brand-200 animate-pulse" />
+          <Heart className="w-6 h-6 text-brand-600 fill-brand-200 animate-pulse" aria-hidden="true" />
         </div>
 
         {/* Name Header */}

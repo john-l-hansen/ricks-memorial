@@ -69,7 +69,7 @@ export default function EventDetails() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-2">
           {/* Date & Time */}
           <div className="flex items-start gap-4 p-5 rounded-md bg-brand-50/60 border border-brand-100">
-            <div className="p-3 bg-brand-100 text-brand-900 rounded-md shrink-0">
+            <div className="p-3 bg-brand-100 text-brand-900 rounded-md shrink-0" aria-hidden="true">
               <Clock className="w-6 h-6" />
             </div>
             <div>
@@ -84,16 +84,18 @@ export default function EventDetails() {
                   href={googleCalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 bg-brand-900 text-brand-50 rounded hover:bg-brand-950 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 bg-brand-900 text-brand-50 rounded hover:bg-brand-950 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
                 >
-                  <CalendarPlus className="w-3.5 h-3.5" />
-                  Add to Google Calendar
+                  <CalendarPlus className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>Add to Google Calendar</span>
+                  <span className="sr-only"> (opens Google Calendar in a new tab)</span>
                 </a>
                 <button
+                  type="button"
                   onClick={handleDownloadICS}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 bg-brand-200/80 text-brand-900 rounded hover:bg-brand-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 bg-brand-200/80 text-brand-900 rounded hover:bg-brand-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
                 >
-                  <Calendar className="w-3.5 h-3.5" />
+                  <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
                   iCal / Outlook (.ics)
                 </button>
               </div>
@@ -102,7 +104,7 @@ export default function EventDetails() {
 
           {/* Location & Map */}
           <div className="flex items-start gap-4 p-5 rounded-md bg-brand-50/60 border border-brand-100">
-            <div className="p-3 bg-brand-100 text-brand-900 rounded-md shrink-0">
+            <div className="p-3 bg-brand-100 text-brand-900 rounded-md shrink-0" aria-hidden="true">
               <MapPin className="w-6 h-6" />
             </div>
             <div>
@@ -121,18 +123,21 @@ export default function EventDetails() {
                   href={googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 bg-brand-700 text-white rounded hover:bg-brand-800 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 bg-brand-700 text-white rounded hover:bg-brand-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  Google Maps
+                  <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>Google Maps</span>
+                  <span className="sr-only"> (opens in Google Maps)</span>
                 </a>
                 <a
                   href={appleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 bg-brand-200/80 text-brand-900 rounded hover:bg-brand-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 bg-brand-200/80 text-brand-900 rounded hover:bg-brand-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
                 >
-                  Apple Maps
+                  <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>Apple Maps</span>
+                  <span className="sr-only"> (opens in Apple Maps)</span>
                 </a>
               </div>
             </div>
@@ -141,7 +146,7 @@ export default function EventDetails() {
 
         {/* Written Memory Box Invitation Note */}
         <div className="mt-8 p-5 bg-brand-100/50 rounded-md border border-brand-200 text-center">
-          <Heart className="w-5 h-5 text-brand-700 mx-auto mb-2 fill-brand-300/50" />
+          <Heart className="w-5 h-5 text-brand-700 mx-auto mb-2 fill-brand-300/50" aria-hidden="true" />
           <p className="text-brand-900 font-serif italic text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             “We invite you to bring a favorite memory of Rick, written down or simply carried in
             your heart. There will be a special place to leave your written memories for our

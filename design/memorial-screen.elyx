@@ -1,12 +1,5 @@
-import "public/images/rick-03.png" as photo3
-import "public/images/rick-02.png" as photo2
-import "public/images/rick-01.png" as photo1
 import "design/tokens.elyx" as tokens
 import "design/components/Navbar.elyx" as navbarLibrary
-import "design/components/FlyerCard.elyx" as flyerCardLibrary
-import "design/components/EventDetailsCard.elyx" as eventDetailsCardLibrary
-import "design/components/MemoryBookCard.elyx" as memoryBookCardLibrary
-import "design/components/RSVPCard.elyx" as rsvpCardLibrary
 import "design/components/Footer.elyx" as footerLibrary
 
 export MemorialScreen = frame {
@@ -21,31 +14,6 @@ export MemorialScreen = frame {
   topNav = frame : navbarLibrary.Navbar {
     width: 100%,
 
-    navLinks {
-      rsvpBtn {
-        rsvpLabel {
-          font-style: "Regular",
-          font-family: "Cabin"
-        }
-      }
-
-      linkMemories {
-        contents: "SHARE A MEMORY",
-        font-size: 10,
-        font-style: "SemiBold",
-        letter-spacing: 20%,
-        font-family: "Cabin"
-      }
-
-      linkDetails {
-        contents: "SERVICE DETAILS",
-        font-size: 10,
-        font-style: "SemiBold",
-        letter-spacing: 20%,
-        font-family: "Cabin"
-      }
-    }
-
     brandLink {
       left: 32px,
       top: 23px,
@@ -59,6 +27,31 @@ export MemorialScreen = frame {
         letter-spacing: 25%
       }
     }
+
+    navLinks {
+      linkMemories {
+        contents: "SHARE A MEMORY",
+        font-size: 10,
+        font-family: "Cabin",
+        font-style: "SemiBold",
+        letter-spacing: 20%
+      }
+
+      linkDetails {
+        contents: "SERVICE DETAILS",
+        font-size: 10,
+        font-family: "Cabin",
+        font-style: "SemiBold",
+        letter-spacing: 20%
+      }
+
+      rsvpBtn {
+        rsvpLabel {
+          font-family: "Cabin",
+          font-style: "Regular"
+        }
+      }
+    }
   }
 
   // 2. Main Body Content (Matching app/page.tsx layout)
@@ -67,8 +60,7 @@ export MemorialScreen = frame {
     top: 63px,
     width: 1200px,
     layout: {direction: .column, align-items: .center, item-gap: 48px},
-    padding: [48px, 0px, 64px],
-    children: [.nil, .nil, .nil, .nil]
+    padding: [48px, 0px, 64px]
   }
 
   // 3. Page Footer
