@@ -78,12 +78,9 @@ export default function RSVPSection() {
           <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-brand-50 mt-1 mb-2">
             RSVP for the Memorial
           </h2>
-          <p className="text-brand-300 font-serif italic text-base sm:text-lg mb-4">
+          <p className="text-brand-300 font-serif italic text-base sm:text-lg mb-8">
             Kindly RSVP by <strong className="text-brand-100 font-semibold">November 1, 2026</strong>{" "}
             if you plan on joining us.
-          </p>
-          <p className="text-xs text-brand-400 mb-8 max-w-md mx-auto">
-            You can RSVP using <strong>any email provider</strong> (Yahoo, Outlook, iCloud, AOL, Hotmail, Gmail, etc.) or copy our address below.
           </p>
 
           {/* Quick Email Copy Box */}
@@ -184,7 +181,7 @@ export default function RSVPSection() {
 
               <div>
                 <label htmlFor="rsvp-guest-email" className="block text-xs font-semibold text-brand-300 uppercase tracking-wider mb-1.5">
-                  Your Email Address (Any provider welcome)
+                  Your Email Address
                 </label>
                 <input
                   id="rsvp-guest-email"
@@ -193,7 +190,7 @@ export default function RSVPSection() {
                   type="email"
                   value={guestEmail}
                   onChange={(e) => setGuestEmail(e.target.value)}
-                  placeholder="e.g. yourname@yahoo.com / outlook.com / icloud.com"
+                  placeholder="e.g. yourname@example.com"
                   className="w-full bg-brand-950 border border-brand-700 rounded px-3.5 py-2.5 text-sm text-brand-100 placeholder-brand-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950 transition-colors"
                 />
               </div>

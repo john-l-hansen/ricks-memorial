@@ -19,7 +19,7 @@ export RSVPCard = frame {
   rsvpHeader = frame {
     width: 100%,
     layout: { direction: .column, align-items: .center, item-gap: 6px },
-    children: [rsvpTag, rsvpTitle, rsvpDeadline, rsvpProviderNote],
+    children: [rsvpTag, rsvpTitle, rsvpDeadline],
 
     rsvpTag = text {
       contents: "PLEASE LET US KNOW",
@@ -42,13 +42,6 @@ export RSVPCard = frame {
       font-family: tokens.typography.fontSerif,
       font-style: "Italic",
       fill: tokens.colors.brand300
-    },
-
-    rsvpProviderNote = text {
-      contents: "You can RSVP using any email provider (Yahoo, Outlook, iCloud, AOL, Hotmail, Gmail, etc.)",
-      font-size: 12,
-      font-family: tokens.typography.fontSans,
-      fill: tokens.colors.brand400
     }
   },
 
@@ -132,7 +125,7 @@ export RSVPCard = frame {
       layout: { direction: .row, align-items: .center },
       children: [emailPlaceholder],
       emailPlaceholder = text {
-        contents: "Your Email Address (Any provider welcome)",
+        contents: "Your Email Address",
         font-size: 12,
         font-family: tokens.typography.fontSans,
         fill: tokens.colors.brand400
@@ -180,7 +173,7 @@ export RSVPCard = frame {
       layout: { direction: .row, align-items: .center, justify-content: .center },
       children: [submitLabel],
       submitLabel = text {
-        contents: "OPEN EMAIL & SEND RSVP",
+        contents: "SEND RSVP",
         font-size: 12,
         font-family: tokens.typography.fontSans,
         letter-spacing: 10%,
