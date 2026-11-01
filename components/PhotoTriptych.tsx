@@ -18,13 +18,13 @@ const photos: PhotoProps[] = [
   },
   {
     src: "/images/rick-02.png",
-    alt: "Rick at home with his beloved companion dog, Donia",
-    caption: "At home with his beloved companion, Donia",
+    alt: "Rick in a red shirt enjoying cherished moments with family and friends",
+    caption: "Cherished moments with family and friends",
   },
   {
     src: "/images/rick-03.png",
-    alt: "Rick in a red shirt enjoying cherished moments with family and friends",
-    caption: "Cherished moments with family and friends",
+    alt: "Rick at home with his beloved companion dog, Donia",
+    caption: "At home with his beloved companion, Donia",
   },
 ];
 
