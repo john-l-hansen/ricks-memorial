@@ -58,7 +58,7 @@ export default function MemorialPage() {
               </p>
 
               {/* Story & Invitation Paragraphs */}
-              <div className="space-y-5 text-brand-900 font-serif text-base sm:text-lg leading-relaxed text-center sm:text-justify max-w-xl mx-auto">
+              <div className="space-y-5 text-brand-900 font-serif text-base sm:text-lg leading-relaxed text-left md:text-center max-w-xl mx-auto">
                 <p>
                   Please join us for a private gathering to celebrate Rick, remember the life he
                   lived, and honor the love, laughter, friendship, and memories he left with each of
