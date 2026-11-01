@@ -18,8 +18,8 @@ const photos: PhotoProps[] = [
   },
   {
     src: "/images/rick-02.png",
-    alt: "Rick at home with his beloved companion dog",
-    caption: "At home with his beloved companion",
+    alt: "Rick at home with his beloved companion dog, Donia",
+    caption: "At home with his beloved companion, Donia",
   },
   {
     src: "/images/rick-03.png",
@@ -99,36 +99,38 @@ export default function PhotoTriptych() {
       {/* Lightbox Modal */}
       {selectedPhoto && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6"
           onClick={handleClose}
           role="dialog"
           aria-modal="true"
           aria-labelledby="lightbox-caption"
         >
           <div
-            className="relative max-w-4xl max-h-[90vh] bg-white rounded-lg p-2 overflow-hidden shadow-2xl"
+            className="relative w-full max-w-5xl lg:max-w-6xl max-h-[96vh] bg-white rounded-lg p-3 sm:p-4 overflow-hidden shadow-2xl flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               ref={closeButtonRef}
               onClick={handleClose}
               type="button"
-              className="absolute top-4 right-4 z-10 p-2 bg-black/60 text-white rounded-full hover:bg-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="absolute top-4 right-4 z-10 p-2.5 bg-black/70 hover:bg-black text-white rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-lg cursor-pointer"
               aria-label="Close enlarged photo"
             >
-              <X className="w-5 h-5" aria-hidden="true" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
             </button>
-            <div className="relative w-full h-[70vh]">
+            <div className="relative w-full h-[76vh] sm:h-[82vh] max-h-[85vh]">
               <Image
                 src={selectedPhoto.src}
                 alt={selectedPhoto.alt}
                 fill
+                sizes="(max-width: 1024px) 100vw, 1200px"
                 className="object-contain"
+                priority
               />
             </div>
             <p
               id="lightbox-caption"
-              className="text-center py-3 text-brand-900 text-sm font-medium font-serif italic"
+              className="text-center pt-3 pb-1 text-brand-900 text-sm sm:text-base md:text-lg font-medium font-serif italic"
             >
               {selectedPhoto.caption}
             </p>
