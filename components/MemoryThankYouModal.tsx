@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { X, Heart } from "lucide-react";
+import { X } from "lucide-react";
 
 interface MemoryThankYouModalProps {
   isOpen: boolean;
@@ -65,11 +65,6 @@ export default function MemoryThankYouModal({
         {/* Animated Dog Illustration */}
         <div className="flex justify-center mb-5 relative" aria-hidden="true">
           <div className="relative w-36 h-36 flex items-center justify-center">
-            {/* Floating Heart */}
-            <div className="absolute top-1 right-6 animate-heart-float pointer-events-none text-brand-600">
-              <Heart className="w-5 h-5 fill-brand-300" />
-            </div>
-
             <svg
               viewBox="0 0 120 120"
               className="w-full h-full drop-shadow-sm select-none"
@@ -104,14 +99,9 @@ export default function MemoryThankYouModal({
               <circle cx="72" cy="101" r="1.5" fill="#FAF8F6" />
               <circle cx="75" cy="100" r="1.5" fill="#FAF8F6" />
 
-              {/* Collar & Heart Pendant */}
+              {/* Collar & Pendant */}
               <rect x="42" y="65" width="36" height="5" rx="2.5" fill="#5C4B40" />
-              <path
-                d="M60 70 C58 68, 55 69, 55 72 C55 75, 60 78, 60 78 C60 78, 65 75, 65 72 C65 69, 62 68, 60 70 Z"
-                fill="#C7B0A2"
-                stroke="#30251F"
-                strokeWidth="1"
-              />
+              <circle cx="60" cy="73" r="3.5" fill="#C7B0A2" stroke="#30251F" strokeWidth="1" />
 
               {/* Dog Head */}
               <circle cx="60" cy="46" r="23" fill="#B09280" />

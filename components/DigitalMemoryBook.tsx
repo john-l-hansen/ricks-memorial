@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { MessageSquare, Heart, Send, Lock, Unlock, KeyRound, Mail, Loader2, AlertCircle } from "lucide-react";
+import { MessageSquare, Send, Lock, Unlock, KeyRound, Mail, Loader2, AlertCircle } from "lucide-react";
 import MemoryThankYouModal from "@/components/MemoryThankYouModal";
 
 interface Story {
@@ -348,7 +348,7 @@ export default function DigitalMemoryBook() {
         {/* List of Stories or Empty State */}
         {stories.length === 0 ? (
           <div className="text-center py-10 px-4 bg-brand-50/40 rounded-lg border border-dashed border-brand-200/90 max-w-xl mx-auto">
-            <Heart className="w-6 h-6 text-brand-400 mx-auto mb-2" aria-hidden="true" />
+            <MessageSquare className="w-5 h-5 text-brand-400 mx-auto mb-2" aria-hidden="true" />
             <p className="font-serif italic text-base sm:text-lg text-brand-900 mb-1">
               No memories shared yet.
             </p>
@@ -368,7 +368,6 @@ export default function DigitalMemoryBook() {
                 </p>
                 <div className="flex items-center justify-between pt-3 border-t border-brand-200/60 text-xs text-brand-700">
                   <div className="flex items-center gap-1.5">
-                    <Heart className="w-3.5 h-3.5 text-brand-600 fill-brand-200" aria-hidden="true" />
                     <span className="font-semibold text-brand-900">{s.author}</span>
                     <span className="text-brand-600">• {s.relationship}</span>
                   </div>

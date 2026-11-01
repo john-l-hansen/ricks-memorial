@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Heart, Calendar, MessageSquare, Mail } from "lucide-react";
+import { Calendar, MessageSquare, Mail } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -48,9 +48,8 @@ export default function Navbar() {
         <a
           href="#"
           aria-label="Richard Earl LaDow Jr. Memorial - back to top of page"
-          className="flex items-center gap-2 text-brand-900 hover:text-brand-700 transition-colors group rounded p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700"
+          className="flex items-center text-brand-900 hover:text-brand-700 transition-colors group rounded p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-700"
         >
-          <Heart className="w-4 h-4 text-brand-600 fill-brand-200 group-hover:scale-110 transition-transform" aria-hidden="true" />
           <span className="font-sans text-[12px] font-semibold tracking-[0.25em] uppercase text-brand-950">
             Richard Earl LaDow Jr.
           </span>

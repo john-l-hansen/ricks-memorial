@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Calendar, MapPin, Clock, ExternalLink, CalendarPlus, Heart } from "lucide-react";
+import { Calendar, MapPin, Clock, ExternalLink, CalendarPlus } from "lucide-react";
 
 export default function EventDetails() {
   const eventDate = "Saturday, November 7, 2026";
@@ -146,7 +146,6 @@ export default function EventDetails() {
 
         {/* Written Memory Box Invitation Note */}
         <div className="mt-8 p-5 bg-brand-100/50 rounded-md border border-brand-200 text-center">
-          <Heart className="w-5 h-5 text-brand-700 mx-auto mb-2 fill-brand-300/50" aria-hidden="true" />
           <p className="text-brand-900 font-serif italic text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             “We invite you to bring a favorite memory of Rick, written down or simply carried in
             your heart. There will be a special place to leave your written memories for our

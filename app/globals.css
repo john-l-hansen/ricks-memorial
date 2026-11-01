@@ -54,21 +54,6 @@
   }
 }
 
-@keyframes heartFloat {
-  0% {
-    transform: translateY(0px) scale(0.85);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateY(-6px) scale(1.05);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-14px) scale(0.9);
-    opacity: 0;
-  }
-}
-
 .animate-tail-wag {
   transform-origin: 85% 80%;
   animation: tailWag 0.5s ease-in-out infinite alternate;
@@ -77,10 +62,6 @@
 .animate-ear-wiggle {
   transform-origin: top center;
   animation: earWiggle 2.5s ease-in-out infinite;
-}
-
-.animate-heart-float {
-  animation: heartFloat 2.2s ease-in-out infinite;
 }
 
 /* Accessibility: Respect user preference for reduced motion (WCAG 2.3.3) */

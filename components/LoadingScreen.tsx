@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Heart } from "lucide-react";
 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
@@ -48,11 +47,6 @@ export default function LoadingScreen() {
       aria-busy={loading}
     >
       <div className="flex flex-col items-center text-center px-6 max-w-sm mx-auto">
-        {/* Subtle Memorial Icon */}
-        <div className="mb-4 transform transition-transform duration-1000 ease-out">
-          <Heart className="w-6 h-6 text-brand-600 fill-brand-200 animate-pulse" aria-hidden="true" />
-        </div>
-
         {/* Name Header */}
         <h2 className="font-serif text-2xl sm:text-3xl text-brand-950 font-normal tracking-wide mb-6">
           Richard Earl LaDow Jr.

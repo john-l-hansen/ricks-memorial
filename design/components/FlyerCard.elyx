@@ -55,7 +55,7 @@ export FlyerCard = frame {
     rolesText = text {
       fill: tokens.colors.brand600,
       contents: "HUSBAND — FATHER — PAPA — SON — BROTHER — UNCLE — FRIEND",
-      font-size: 12,
+      font-size: 10,
       font-family: tokens.typography.fontSans,
       letter-spacing: 20%
     }

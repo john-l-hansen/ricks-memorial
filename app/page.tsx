@@ -43,7 +43,7 @@ export default function MemorialPage() {
                 October 5, 1957 — June 8, 2026
               </p>
 
-              <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-brand-700 uppercase font-sans mb-8">
+              <p className="text-[10px] sm:text-xs font-semibold tracking-[0.22em] text-brand-700 uppercase font-sans mb-8">
                 HUSBAND — FATHER — PAPA — SON — BROTHER — UNCLE — FRIEND
               </p>
 
